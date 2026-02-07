@@ -1,0 +1,95 @@
+import java.util.Scanner;
+public class atm{
+	public static void main(String[] args){
+		Scanner obj = new Scanner(System.in);
+		
+		System.out.print("Enter your name:");
+		String name = obj.nextLine();
+		
+		System.out.print("Enter your mobile number:");
+		String mobile = obj.nextLine();
+		
+		System.out.print("Enter your Password:");
+		int password = obj.nextInt();
+		
+		int balance = 50000;
+		int correct_password = 3691;
+		
+
+		if (password == correct_password){
+			
+			System.out.println();
+			System.out.println("Welcome "+name+"!");
+			System.out.println("Pls enter any option to proceed.");
+			
+			while(true)
+			{	
+				System.out.println();
+				System.out.println("1. Deposit");
+				System.out.println("2. Withdraw");
+				System.out.println("3. Balance check");
+				System.out.println("4. Exit");
+				System.out.println();
+				
+				System.out.print("Enter your option: ");
+				int option = obj.nextInt();
+				
+		
+				switch(option)
+				{
+					case 1:
+						System.out.print("Enter deposit amount:");
+						int deposit = obj.nextInt();
+					
+						if(deposit > 0)
+						{
+							balance = balance + deposit;
+							System.out.println("Amount Deposited Succesfully");
+							System.out.println("Want to Continue..? if not Enter option 4 to exit.");
+							
+						}
+						else
+						{
+							System.out.println("Invalid amount entered");
+						}
+						break;
+					
+				
+					case 2:
+						System.out.println();
+						System.out.print("Enter withdrawal amount:");
+						int withdraw = obj.nextInt();
+						if(withdraw <= balance){
+							balance = balance - withdraw;
+							System.out.println("Transaction proceeding...pls wait!");
+							System.out.println("Current Balance is: " + balance + " Rs");
+						}
+						else{
+							System.out.println("Insufficient balance!");
+						}
+						break;
+				
+					case 3:
+						System.out.println();
+						System.out.println("Current Balance is: " + balance + " Rs");
+						break;
+				
+					case 4:
+						System.out.println();
+						System.out.println("Thank you. Have a great day.");
+						break;
+				
+					default:
+					System.out.println();
+					System.out.println("Invalid option entered! Try again.");
+				}
+			}
+		}
+		else
+		{
+			System.out.println("Incorrect password! Try again");
+		}
+		
+		
+	}
+}
